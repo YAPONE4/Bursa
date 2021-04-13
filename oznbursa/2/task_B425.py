@@ -30,8 +30,10 @@ def wiki_function():
         for j in range (0, len(i)):
             if i[j].isalpha() or i[j] == ' ':
                 line += i[j]
-        i = line
-        onetext += i
+            elif i[j] == "\n":
+                    line += ' '
+        f = line
+        onetext += f
     print(onetext)
 
     words = onetext.split(' ')
