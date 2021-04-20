@@ -1,0 +1,43 @@
+from Person import Person
+
+class Teacher(Person):
+    def __init__(self, last_name, first_name, age, cabinet = ''):
+        super().__init__(last_name, first_name, age)
+        self.cabinet = cabinet
+        self.subjects = {}
+
+    def change_cabinet(self, cabinet):
+        self.cabinet = cabinet
+    
+    def add_subject(self, klas, subject):
+        if klas not in self.subjects:
+            newsubj = {klas : [subject]}
+            self.subjects.update(newsubj)
+        else:
+            newsubj = {klas : subject}
+            self.subjects[klas].append(newsubj[klas])
+
+    def del_subject(self, klas, subject):
+        if len(self.subjects[klas]) > 1:
+            self.subjects[klas].remove(subject)
+        else:
+            del self.subjects[klas]
+
+    def print_info(self):
+        print("Teacher info:\n{} {}, age: {}\n".format(self.last_name, self.first_name, self.age))
+        print("Teachers' subjects:\n")
+        c = 0
+        for i in self.subjects:
+            print("{} class: ".format(i))
+            print(', '.join(self.subjects[i]))
+            c += 1
+        print('\n')
+            
+        
+
+if __name__ == '__main__':
+    teach = Teacher("Ivanova", "Zinaida", 99, 12)
+    teach.subjects = {10 : ["History", "Socionics"]}
+    teach.add_subject(10, "Russian")
+    teach.add_subject(11, "English")
+    teach.print_info()
