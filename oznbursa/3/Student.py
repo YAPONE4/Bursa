@@ -8,5 +8,20 @@ class Student(Person):
     def add_mark(self, subject, date, mark):
         newmark = {date, mark}
         if subject not in self.marks:
-            self.marks.update(subject)
-        self.marks[subject].update(newmark)
+            self.marks.update({subject : newmark})
+        else:
+            self.marks[subject].update(newmark)
+    def subj_marks(self, subject):
+        print("Marks in the subject {}:".format(subject))
+        list_marks = list(self.marks[subject].values())
+        printlist = ' '.join(list_marks)
+        print(printlist)
+    def print_marks(self):
+        list_marks = list(self.marks.items())
+        print("School Journal of {} {}:\n".format(self.last_name, self.first_name))
+        for i in range(0, len(list_marks)):
+            print("{}:".format(list_marks[i][0]))
+            for j in list(list_marks[i][1].items()):
+                print("{} : {}".format(j[0], j[1]))
+    def print_student(self):
+        print("Student info:\n{} {}, {}, class: {}".format(self.last_name, self.first_name, self.age, self.klas))

@@ -25,8 +25,6 @@ from Person import Person
 from Student import Student
 
 Ayas = Student('Ayas', 'Sas', '19', 11)
-s = str(input())
-d = str(input())
-m = int(input())
-Ayas.add_mark(s, d, m)
-print(Ayas.marks)
+Ayas.marks = {'Sas' : {'12/03' : '5', '13/03' : '5', '14/03' : '5'}, 'Ayas' : {'12/03' : '5', '13/03' : 5}}
+Ayas.print_marks()
+Ayas.print_student()
