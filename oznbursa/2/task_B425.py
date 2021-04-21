@@ -62,6 +62,8 @@ def wiki_function():
                 if words[j] == i:
                     words[j] = 'PYTHON'
     
+    print(words)
+
     of = open("whiteredacted.txt", "w")
     max = 0
     for i in words:
