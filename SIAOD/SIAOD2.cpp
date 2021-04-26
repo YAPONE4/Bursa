@@ -71,7 +71,7 @@ struct List* sortv(List* L1, int n)
 				t1->next = t2->next;
 				t2->next = t1;
 			}
-            if (j == 0)
+            //if (j == 0)
 
 		}
 	}
