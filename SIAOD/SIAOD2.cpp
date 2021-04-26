@@ -21,7 +21,6 @@ struct List* add(List* elem, float num)
 {
     struct List* temp, * space;
     space = (struct List*)malloc(sizeof(struct List));
-    cout << "ADD" << endl;
     temp = elem;
     while (temp->next != 0)
     {
@@ -41,7 +40,6 @@ void enter(List* elem, int n)
     for (int i = 1; i < n; i++)
     {
         cin >> k;
-        cout << elem << endl;
         add(elem, k);
     }
 }
@@ -50,12 +48,34 @@ void outp(List* elem)
 {
     struct List* temp;
     temp = elem;
-    int counter = 0;
+    int counter = 1;
     do
     {
         cout << counter << ": " << temp->field << endl;
         temp = temp->next;
+        counter++;
     } while (temp != NULL);
+}
+
+struct List* sortv(List* L1, int n)
+{
+    struct List *t1, *t2, *t3;
+	t1 = L1;
+	for (int i = 0; i < n; i++)
+	{
+        t2 = t1->next;
+		for (int j = i; j < (n - 1); j++)
+		{
+			if (t1->field > t2->field)
+			{
+				t1->next = t2->next;
+				t2->next = t1;
+			}
+            if (j == 0)
+
+		}
+	}
+    return(L1);
 }
 
 struct List* finding(List* L1, List* L2, List* L3, int n)
@@ -72,6 +92,7 @@ struct List* finding(List* L1, List* L2, List* L3, int n)
             if (t1->field == t2->field)
             {
                 add(L, t1->field);
+                t2 = t2->next;
                 break;
             }
             t2 = t2->next;
@@ -85,7 +106,6 @@ struct List* finding(List* L1, List* L2, List* L3, int n)
 
 int main()
 {
-    cout << sizeof(List) << " " << sizeof(struct List) << endl;
     List* L1, * L2, * L;
     int n;
     L = init(-1);
@@ -95,11 +115,15 @@ int main()
     cin >> frst;
     L1 = init(frst);
     enter(L1, n);
-    cout << endl << "Second list: ";
+    L1 = sortv(L1, n);
+    outp(L1);
+    /*cout << endl << "Second list: ";
     cin >> frst2;
     L2 = init(frst2);
     enter(L2, n);
     cout << endl;
     L = finding(L1, L2, L, n);
-    outp(L);
+    L = L->next;
+    outp(L);*/
+    return 0;
 }

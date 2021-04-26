@@ -19,13 +19,16 @@ class Student(Person):
         printlist = ' '.join(list_marks)
         print(printlist)
 
-    def printmarks(self):
+    def print_marks(self):
         list_marks = list(self.marks.items())
-        print("School Journal of {} {}:\n".format(self.last_name, self.first_name))
+        info = ''
+        info += "School Journal of {} {}:\n".format(self.last_name, self.first_name)
         for i in range(0, len(list_marks)):
-            print("{}:".format(list_marks[i][0]))
+            info += ("{}: ".format(list_marks[i][0]))
             for j in list(list_marks[i][1].items()):
-                print("{} : {}".format(j[0], j[1]))
+                info += ("{} - {}, ".format(j[0], j[1]))
+            info += '\n'
+        return info
 
     def print_info(self):
-        print("{} {}, age: {}, class: {}".format(self.last_name, self.first_name, self.age, self.klas))
+        return ("{} {}, age: {}, class: {}".format(self.last_name, self.first_name, self.age, self.klas))
