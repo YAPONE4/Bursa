@@ -1,4 +1,0 @@
-﻿  SIAOD2.cpp
-C:\Users\Аяс\Desktop\prsiaod\SIAOD2\SIAOD2\SIAOD2\SIAOD2.cpp(45,19): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-C:\Users\Аяс\Desktop\prsiaod\SIAOD2\SIAOD2\SIAOD2\SIAOD2.cpp(67,11): warning C4101: t: неиспользованная локальная переменная
-  SIAOD2.vcxproj -> C:\Users\Аяс\Desktop\prsiaod\SIAOD2\SIAOD2\Debug\SIAOD2.exe
