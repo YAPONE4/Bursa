@@ -62,7 +62,7 @@ struct List* sortv(List* L1, int n)
     struct List *t1, *t2, *t3;
 	t1 = L1;
 	for (int i = 0; i < n; i++)
-	{
+	{   
         t2 = t1->next;
 		for (int j = i; j < (n - 1); j++)
 		{
@@ -70,8 +70,7 @@ struct List* sortv(List* L1, int n)
 			{
 				t1->next = t2->next;
 				t2->next = t1;
-			}
-            //if (j == 0)
+            }
 
 		}
 	}
