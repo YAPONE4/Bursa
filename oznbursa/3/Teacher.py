@@ -18,12 +18,15 @@ class Teacher(Person):
             self.subjects[klas].append(newsubj[klas])
 
     def del_subject(self, klas, subject):
+        if subject not in self.subjects[klas]:
+            print('Error, there is no such a subject')
+            return 0
         if len(self.subjects[klas]) > 1:
             self.subjects[klas].remove(subject)
         else:
             del self.subjects[klas]
 
-    def print_info(self):
+    def __str__(self):
         info = ("Teacher info:\n{} {}, age: {}, cabinet number: {}\n".format(self.last_name, self.first_name, self.age, self.cabinet))
         info += ("Teachers' subjects:\n")
         c = 0
@@ -43,4 +46,4 @@ if __name__ == '__main__':
     teach.add_subject(11, "English")
     teach.del_subject(10, 'History')
     teach.change_cabinet(555)
-    print(teach.print_info())
+    print(teach)

@@ -30,7 +30,7 @@ class Student(Person):
             info += '\n'
         return info
 
-    def print_info(self):
+    def __str__(self):
         return ("{} {}, age: {}, class: {}".format(self.last_name, self.first_name, self.age, self.klas))
 
 if __name__ == '__main__':
@@ -38,5 +38,5 @@ if __name__ == '__main__':
     itsme.marks = {'History' : {'12/03' : '5'}, 'Biology' : {'12/03' : '5', '13/03' : '4'}, 'Math' : {'12/03' : '5', '13/03' : '4'}}
     itsme.add_mark('History', '13/03', '5')
     itsme.subj_marks('History')
-    print(itsme.print_info())
+    print(itsme)
     print(itsme.print_marks())
