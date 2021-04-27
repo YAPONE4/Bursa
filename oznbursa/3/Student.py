@@ -7,17 +7,17 @@ class Student(Person):
         self.marks = {}
 
     def add_mark(self, subject, date, mark):
-        newmark = {date, mark}
+        newmark = {date : mark}
         if subject not in self.marks:
             self.marks.update({subject : newmark})
         else:
             self.marks[subject].update(newmark)
 
     def subj_marks(self, subject):
-        print("Marks in the subject {}:".format(subject))
+        info = ("Marks in the subject {}: ".format(subject))
         list_marks = list(self.marks[subject].values())
-        printlist = ' '.join(list_marks)
-        print(printlist)
+        info += (' '.join(list_marks))
+        return info
 
     def print_marks(self):
         list_marks = list(self.marks.items())
@@ -32,3 +32,11 @@ class Student(Person):
 
     def print_info(self):
         return ("{} {}, age: {}, class: {}".format(self.last_name, self.first_name, self.age, self.klas))
+
+if __name__ == '__main__':
+    itsme = Student('Prin', 'Alexey', 18, 11)
+    itsme.marks = {'History' : {'12/03' : '5'}, 'Biology' : {'12/03' : '5', '13/03' : '4'}, 'Math' : {'12/03' : '5', '13/03' : '4'}}
+    itsme.add_mark('History', '13/03', '5')
+    itsme.subj_marks('History')
+    print(itsme.print_info())
+    print(itsme.print_marks())

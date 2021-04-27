@@ -24,7 +24,7 @@ class Teacher(Person):
             del self.subjects[klas]
 
     def print_info(self):
-        info = ("Teacher info:\n{} {}, age: {}\n".format(self.last_name, self.first_name, self.age))
+        info = ("Teacher info:\n{} {}, age: {}, cabinet number: {}\n".format(self.last_name, self.first_name, self.age, self.cabinet))
         info += ("Teachers' subjects:\n")
         c = 0
         for i in self.subjects:
@@ -41,4 +41,6 @@ if __name__ == '__main__':
     teach.subjects = {10 : ["History", "Socionics"]}
     teach.add_subject(10, "Russian")
     teach.add_subject(11, "English")
+    teach.del_subject(10, 'History')
+    teach.change_cabinet(555)
     print(teach.print_info())

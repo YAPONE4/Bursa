@@ -22,9 +22,9 @@ class Klass:
     
     def get_student(self, i):
         if i == 0:
-            return(self.class_teacher)
+            return(self.class_teacher.print_info())
         else:
-            return(list(self.class_journal.values())[i])
+            return(list(self.class_journal.values())[i].print_info())
 
     def add_student(self, nstudent):
         self.class_journal.update({"{} {}".format(nstudent.last_name, nstudent.first_name) : nstudent})
@@ -56,4 +56,10 @@ if __name__ == '__main__':
     myclass = Klass(num, clj, clt)
     myclass.add_student(s4)
     myclass.kill_student(2)
+    print('Students number:')
+    print('{}\n'.format(myclass.students_number()))
+    print('Getting student/teacher:')
+    print(myclass.get_student(0))
+    print(myclass.get_student(2))
+    print(myclass.print_info())
     myclass.export_all_info()
