@@ -1,12 +1,15 @@
 from Person import Person
 from Student import Student
 from Teacher import Teacher
+from Logg import logg
+import pickle
 
 class Klass:
     def __init__(self, number, class_journal = [], class_teacher = ''):
         self.number = number
         self.class_journal = class_journal
         self.class_teacher = class_teacher
+        logg('CRE', 'Created Class {}'.format(number))
 
     def __str__(self):
         info = ('Class info:\n\n')
@@ -14,15 +17,18 @@ class Klass:
         info += ('Students info:\n\n')
         for i in self.class_journal:
             info += str(i) + '\n'
+            info += i.print_marks() + '\n'
         return info
 
     def __len__(self):
+        logg('INF', 'Getted info about class size')
         return len(self.class_journal)
     
     def get_student(self, i):
         if i > len(self):
             print('Error, cannot get the student')
             return 0
+        logg('INF', 'Getted info about {} {}'.format(self.class_journal[i].last_name, self.class_journal[i].first_name))
         if i == 0:
             return str(self.class_teacher)
         else:
@@ -30,17 +36,19 @@ class Klass:
 
     def __add__(self, nstudent):
         self.class_journal.append(nstudent)
+        logg('INF', 'Added student to class {}'.format(self.number))
 
     def __sub__(self, nstudent):
         for j in range(0, len(self)):
             if self.class_journal[j] == nstudent:
                 del self.class_journal[j]
+                logg('INF', 'Killed student from class {}'.format(self.number))
                 break
 
     def export_all_info(self):
+        logg('INF', 'Exporting info about class {} started'.format(self.number))
         export = open('class_info.txt', 'w')
         export.write(str(self))
-
 
 if __name__ == '__main__':
     num = 12
@@ -65,3 +73,9 @@ if __name__ == '__main__':
     print(myclass.get_student(2))
     print(myclass)
     myclass.export_all_info()
+    pickle.dump(s1, open('s1.pkl', 'wb'))
+    pickle.dump(s2, open('s2.pkl', 'wb'))
+    pickle.dump(s3, open('s3.pkl', 'wb'))
+    pickle.dump(s4, open('s4.pkl', 'wb'))
+    pickle.dump(clt, open('clt.pkl', 'wb'))
+    pickle.dump(myclass, open('myclass.pkl', 'wb'))

@@ -1,0 +1,15 @@
+INF --- 2021-04-29 18:32:59.196224 --- Printed info about Prin Alex
+INF --- 2021-04-29 18:33:05.834115 --- Printed marks of Sas Ayas
+INF --- 2021-04-29 18:33:27.094632 --- Added marks to Sas Ayas
+INF --- 2021-04-29 18:33:43.002428 --- Printed info about Prin Alex
+INF --- 2021-04-29 18:33:48.379662 --- Printed info about Prin Alex
+INF --- 2021-04-29 18:33:48.380659 --- Printed marks of Sas Ayas
+INF --- 2021-04-29 18:33:48.381657 --- Added marks to Sas Ayas
+INF --- 2021-04-29 18:33:48.381657 --- Printed marks of Sas Ayas
+INF --- 2021-04-29 18:33:48.382654 --- Printed marks of Vinokurov Anton in subject Biology
+INF --- 2021-04-29 18:33:48.383651 --- Printed marks of Shishov Ilya
+INF --- 2021-04-29 18:33:48.386642 --- Printed info about Ivanova Zinaida
+INF --- 2021-04-29 18:33:48.390631 --- Changed cabinet of Teacher Ivanova Zinaida
+INF --- 2021-04-29 18:33:48.393624 --- Added subject to Teacher Ivanova Zinaida
+INF --- 2021-04-29 18:33:48.394623 --- Deleted subject of Teacher Ivanova Zinaida
+INF --- 2021-04-29 18:33:48.396617 --- Printed info about Ivanova Zinaida

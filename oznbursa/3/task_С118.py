@@ -23,8 +23,28 @@
 
 from Person import Person
 from Student import Student
+from Class import Klass
+from Teacher import Teacher
 
-Ayas = Student('Ayas', 'Sas', '19', 11)
-Ayas.marks = {'Sas' : {'12/03' : '5', '13/03' : '5', '14/03' : '5'}, 'Ayas' : {'12/03' : '5', '13/03' : 5}}
-Ayas.print_marks()
-Ayas.printperson()
+num = 12
+s1 = Student('Prin', 'Alex', 19, 11)
+s1.marks = {'Biology' : {'12/03' : '5', '13/03' : '4'}, 'Math' : {'12/03' : '5', '13/03' : '4'} }
+s2 = Student('Sas', 'Ayas', 19, 11)
+s2.marks = {'Biology' : {'12/03' : '5', '13/03' : '4'}, 'Math' : {'12/03' : '3', '13/03' : '4'} }
+s3 = Student('Vinokurov', 'Anton', 19, 11)
+s3.marks = {'Biology' : {'12/03' : '5', '13/03' : '1'}, 'Math' : {'12/03' : '5', '13/03' : '4'} }
+s4 = Student('Shishov', 'Ilya', 19, 11)
+s4.marks = {'Biology' : {'12/03' : '3', '13/03' : '4'}, 'Math' : {'12/03' : '3', '13/03' : '4'} }
+clj = [s1, s2, s3]
+clt = Teacher('Ivanova', 'Zinaida', 55, 12)
+clt.subjects = {10 : ['English', 'Russian', 'Socionics'], 11 : ['History', 'Math']}
+myclass = Klass(num, clj, clt)
+myclass + s4
+myclass - s3
+print('Students number:')
+print(len(myclass))
+print('Getting student/teacher:')
+print(myclass.get_student(0))
+print(myclass.get_student(2))
+print(myclass)
+myclass.export_all_info()
