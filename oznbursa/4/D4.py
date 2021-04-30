@@ -2,6 +2,7 @@ import os
 import subprocess
 import sys
 import shutil
+import time
 
 def folder_create():
     os.mkdir('Ознакомительная практика')
@@ -30,7 +31,10 @@ def all_file_func_read_and_exec():
                 if line.startswith('def'):
                     print(line)
                     break
+            clockstart = time.time() 
             output = subprocess.run([sys.executable, pyfile])
+            clockstop = time.time() 
+            print("Elapsed time: ", clockstop - clockstart)
             print('\n\n')
     for pyfile in listfilesB:
         pyfile = 'Ознакомительная практика/тема B/' + pyfile
@@ -40,8 +44,12 @@ def all_file_func_read_and_exec():
                 if line.startswith('def'):
                     print(line)
                     break
+            clockstart = time.time() 
             output = subprocess.run([sys.executable, pyfile])
+            clockstop = time.time() 
+            print("Elapsed time: ", clockstop - clockstart)
             print('\n\n')
+
 
 def all_file_prog_exec():
     listfilesA = os.listdir('Ознакомительная практика/тема A/')
@@ -55,6 +63,6 @@ def all_file_prog_exec():
         pyfile = 'Ознакомительная практика/тема B/' + pyfile
         output = subprocess.run([sys.executable, pyfile])
 
-folder_create()
-copy_files()
+"""folder_create()
+copy_files()"""
 all_file_func_read_and_exec()
