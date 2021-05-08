@@ -63,6 +63,6 @@ def all_file_prog_exec():
         pyfile = 'Ознакомительная практика/тема B/' + pyfile
         output = subprocess.run([sys.executable, pyfile])
 
-"""folder_create()
-copy_files()"""
+folder_create()
+copy_files()
 all_file_func_read_and_exec()
