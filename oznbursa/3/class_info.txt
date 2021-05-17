@@ -13,11 +13,6 @@ School Journal of Prin Alex:
 Biology: 12/03 - 5, 13/03 - 4, 
 Math: 12/03 - 5, 13/03 - 4, 
 
-Sas Ayas, age: 19, class: 11
-School Journal of Sas Ayas:
-Biology: 12/03 - 5, 13/03 - 4, 
-Math: 12/03 - 3, 13/03 - 4, 
-
 Shishov Ilya, age: 19, class: 11
 School Journal of Shishov Ilya:
 Biology: 12/03 - 3, 13/03 - 4, 

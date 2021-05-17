@@ -50,6 +50,24 @@ class Klass:
         export = open('class_info.txt', 'w')
         export.write(str(self))
 
+    def __getitem__(self, k):
+        if k != 0:
+            return self.class_journal[k]
+        else:
+            return self.class_teacher
+
+    def __setitem__(self, obj, k):
+        if k != 0:
+            self.class_journal[k] = obj
+        else:
+             self.class_teacher = obj
+
+    def __delitem__(self, k):
+        if k != 0:
+            del self.class_journal[k]
+        else:
+            del self.class_teacher
+
 if __name__ == '__main__':
     num = 12
     s1 = Student('Prin', 'Alex', 19, 11)
@@ -71,7 +89,10 @@ if __name__ == '__main__':
     print('Getting student/teacher:')
     print(myclass.get_student(0))
     print(myclass.get_student(2))
+    del myclass[1]
     print(myclass)
+    print(myclass[0])
+    print(myclass[1])
     myclass.export_all_info()
     pickle.dump(s1, open('s1.pkl', 'wb'))
     pickle.dump(s2, open('s2.pkl', 'wb'))
