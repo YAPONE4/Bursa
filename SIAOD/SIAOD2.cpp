@@ -64,10 +64,9 @@ struct List* finding(List* L1, List* L2, List* L3)
     t1 = L1;
     t2 = L2;
     L = L3;
-    float t;
-    while (t1->next != NULL)
+    while (t1 != NULL)
     {
-        while (t2->next != NULL)
+        while (t2 != NULL)
         {
             c = 0;
             if (t1->field == t2->field)
@@ -76,7 +75,10 @@ struct List* finding(List* L1, List* L2, List* L3)
                 do
                 {
                     if (t3->field == t1->field)
+                    {
                         c = 1;
+                        break;
+                    }
                     t3 = t3->next;
                 } while (t3 != NULL);
                 if (c != 1)
@@ -96,66 +98,21 @@ struct List* finding(List* L1, List* L2, List* L3)
 
 struct List* del_minus(List* L2)
 {
-    struct List* L0, * L;
+    struct List* L0, * L, *prev;
     L0 = L2;
     L = L0;
-    int c = 0;
+    prev = NULL;
     do
     {
-        if ((c == 0) && (L0->next->field < 0))
+        if (L0->next->field < 0)
         {
-            L = L0->next;
-            L0 = L0->next;
-        }
-        else
-            if (L0->next->next->field < 0)
-            {
-                L0->next = L0->next->next;
-                c++;
-                L0 = L0->next;
-            }
+            if (prev != NULL)
+                prev->next = L0->next;
             else
-            {
-                L0 = L0->next;
-                c++;
-            }
-    } while (L0->next != NULL);
-    return (L);
-}
-
-struct List* pre_odd(List* L1)
-{
-    struct List* L0, * L, * temp;
-    L = L1;
-    L0 = L1;
-    int num, count = 0;
-    float c;
-    temp = new List;
-    do
-    {
-        num = int(L0->next->field);
-        if ((count == 0) && (int(L0->field) % 2 == 1) && (L0->field - int(L0->field) == 0))
-        {
-            cout << "Type new number: ";
-            cin >> c;
-            temp->field = c;
-            temp->next = L0;
-            L = temp;
-            L0 = L->next;
-            count++;
-            cout << L->field << L->next->field << endl;
+                L = L0->next;
         }
-        else if ((num % 2 == 1) && (L0->next->field - num == 0))
-        {
-            cout << "Type new number: ";
-            cin >> c;
-            temp->field = c;
-            temp->next = L0->next;
-            L0->next = temp;
-            L0 = L0->next->next;
-            count++;
-        }
-        else L0 = L0->next;
+        prev = L0;
+        L0 = L0->next;
     } while (L0->next != NULL);
     return (L);
 }
