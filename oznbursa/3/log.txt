@@ -278,3 +278,34 @@ INF --- 2021-05-12 10:54:54.542395 --- Printed info about Prin Alex
 INF --- 2021-05-12 10:54:54.542395 --- Printed marks of Prin Alex
 INF --- 2021-05-12 10:54:54.542395 --- Printed info about Shishov Ilya
 INF --- 2021-05-12 10:54:54.543392 --- Printed marks of Shishov Ilya
+CRE --- 2021-05-24 23:51:20.912686 --- Created Student Prin Alex
+CRE --- 2021-05-24 23:51:20.934626 --- Created Student Sas Ayas
+CRE --- 2021-05-24 23:51:20.934626 --- Created Student Vinokurov Anton
+CRE --- 2021-05-24 23:51:20.935624 --- Created Student Shishov Ilya
+CRE --- 2021-05-24 23:51:20.935624 --- Created Teacher Ivanova Zinaida
+CRE --- 2021-05-24 23:51:20.936623 --- Created Class 12
+INF --- 2021-05-24 23:51:20.937619 --- Added student to class 12
+INF --- 2021-05-24 23:51:20.937619 --- Getted info about class size
+INF --- 2021-05-24 23:51:20.937619 --- Killed student from class 12
+INF --- 2021-05-24 23:51:20.939615 --- Getted info about class size
+INF --- 2021-05-24 23:51:20.947592 --- Getted info about class size
+INF --- 2021-05-24 23:51:20.947592 --- Getted info about Prin Alex
+INF --- 2021-05-24 23:51:20.947592 --- Printed info about Ivanova Zinaida
+INF --- 2021-05-24 23:51:20.950585 --- Getted info about class size
+INF --- 2021-05-24 23:51:20.950585 --- Getted info about Shishov Ilya
+INF --- 2021-05-24 23:51:20.951581 --- Printed info about Sas Ayas
+INF --- 2021-05-24 23:51:20.952579 --- Printed info about Ivanova Zinaida
+INF --- 2021-05-24 23:51:20.952579 --- Printed info about Prin Alex
+INF --- 2021-05-24 23:51:20.952579 --- Printed marks of Prin Alex
+INF --- 2021-05-24 23:51:20.952579 --- Printed info about Sas Ayas
+INF --- 2021-05-24 23:51:20.952579 --- Printed marks of Sas Ayas
+INF --- 2021-05-24 23:51:20.953576 --- Printed info about Shishov Ilya
+INF --- 2021-05-24 23:51:20.953576 --- Printed marks of Shishov Ilya
+INF --- 2021-05-24 23:51:20.962553 --- Exporting info about class 12 started
+INF --- 2021-05-24 23:51:20.966541 --- Printed info about Ivanova Zinaida
+INF --- 2021-05-24 23:51:20.967539 --- Printed info about Prin Alex
+INF --- 2021-05-24 23:51:20.967539 --- Printed marks of Prin Alex
+INF --- 2021-05-24 23:51:20.967539 --- Printed info about Sas Ayas
+INF --- 2021-05-24 23:51:20.968536 --- Printed marks of Sas Ayas
+INF --- 2021-05-24 23:51:20.968536 --- Printed info about Shishov Ilya
+INF --- 2021-05-24 23:51:20.968536 --- Printed marks of Shishov Ilya

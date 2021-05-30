@@ -33,7 +33,7 @@ def all_file_func_read_and_exec():
                     break
             clockstart = time.time() 
             output = subprocess.run([sys.executable, pyfile])
-            clockstop = time.time() 
+            clockstop = time.time()
             print("Elapsed time: ", clockstop - clockstart)
             print('\n\n')
     for pyfile in listfilesB:
