@@ -36,6 +36,7 @@ def all_file_func_read_and_exec():
             clockstop = time.time()
             print("Elapsed time: ", clockstop - clockstart)
             print('\n\n')
+    print('Функции темы B:\n')
     for pyfile in listfilesB:
         pyfile = 'Ознакомительная практика/тема B/' + pyfile
         with open(pyfile, 'r', encoding=' utf-8') as file:
@@ -49,19 +50,6 @@ def all_file_func_read_and_exec():
             clockstop = time.time() 
             print("Elapsed time: ", clockstop - clockstart)
             print('\n\n')
-
-
-def all_file_prog_exec():
-    listfilesA = os.listdir('Ознакомительная практика/тема A/')
-    listfilesB = os.listdir('Ознакомительная практика/тема B/')
-    print('Запускаем программы темы A:\n')
-    for pyfile in listfilesA:
-        pyfile = 'Ознакомительная практика/тема A/' + pyfile
-        output = subprocess.run([sys.executable, pyfile])
-    print('Запускаем программы темы B:\n')
-    for pyfile in listfilesA:
-        pyfile = 'Ознакомительная практика/тема B/' + pyfile
-        output = subprocess.run([sys.executable, pyfile])
 
 folder_create()
 copy_files()

@@ -2,6 +2,7 @@ import vk_api
 from vk_api.longpoll import VkLongPoll, VkEventType
 from vk_api.utils import get_random_id
 import random
+import re   
 
 random.seed()
 
@@ -13,45 +14,27 @@ def main():
 
     longpoll = VkLongPoll(vk_session)
 
+    usersdict = {}
+
     for event in longpoll.listen():
-        if event.type == VkEventType.MESSAGE_NEW and event.text.lower() == 'прив':
-            vk.messages.send(
-                user_id = event.user_id,
-                random_id = get_random_id(),
-                message = 'Привет, ' + vk.users.get(user_id = event.user_id)[0]['first_name']
-                )
-        elif event.type == VkEventType.MESSAGE_NEW and event.text.lower() == 'подбрось сасную монетку':
-            coin = random.randint(0, 1)
-            if coin == 0:
-                coin = 'Аяс'
-            else:
-                coin = 'Сас'
-            vk.messages.send(
-            user_id = event.user_id,
-            random_id = get_random_id(),
-            message = 'У вас выпал ' + coin
-            )
-        elif event.type == VkEventType.MESSAGE_NEW and event.text.lower() == 'хачу угадайку':
-            digit = str(random.randint(1, 10))
-            vk.messages.send(
-                user_id = event.user_id,
-                random_id = get_random_id(),
-                message = 'Я загадал число от 1 до 10. Не угадаешь -- гамасек'
-                )
-            if event.type == VkEventType.MESSAGE_NEW:
-                if event.text == digit:
-                    vk.messages.send(
-                        user_id = event.user_id,
-                        random_id = get_random_id(),
-                        message = 'Ладно, ты угадал'
+        if event.type == VkEventType.MESSAGE_NEW and event.text and event.to_me:
+            print(event.text)
+            group = re.sub('/w/w/w/w-/d/d-/d/d', 'KEY_EXECUTE_GROUP', event.text, count = 0, flags = 0)
+            if event.text.lower() == 'прив':
+                vk.messages.send(
+                    user_id = event.user_id,
+                    random_id = get_random_id(),
+                    message = 'Привет, ' + vk.users.get(user_id = event.user_id)[0]['first_name']
                     )
-                    break
-                else:
-                    vk.messages.send(
-                        user_id = event.user_id,
-                        random_id = get_random_id(),
-                        message = 'Хаха, гамасек'
+            elif group == 'KEY_EXECUTE_GROUP':
+                usersdict.update({event.user_id : event.text})
+                vk.messages.send(
+                    user_id = event.user_id,
+                    random_id = get_random_id(),
+                    message = 'Отлично! Я запомнил, что ты из группы {}!'.format(event.text)
                     )
+            print(group)
+
 
 if __name__ == '__main__':
     main()

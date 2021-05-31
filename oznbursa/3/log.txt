@@ -278,6 +278,7 @@ INF --- 2021-05-12 10:54:54.542395 --- Printed info about Prin Alex
 INF --- 2021-05-12 10:54:54.542395 --- Printed marks of Prin Alex
 INF --- 2021-05-12 10:54:54.542395 --- Printed info about Shishov Ilya
 INF --- 2021-05-12 10:54:54.543392 --- Printed marks of Shishov Ilya
+<<<<<<< HEAD
 CRE --- 2021-05-24 23:51:20.912686 --- Created Student Prin Alex
 CRE --- 2021-05-24 23:51:20.934626 --- Created Student Sas Ayas
 CRE --- 2021-05-24 23:51:20.934626 --- Created Student Vinokurov Anton
@@ -309,3 +310,34 @@ INF --- 2021-05-24 23:51:20.967539 --- Printed info about Sas Ayas
 INF --- 2021-05-24 23:51:20.968536 --- Printed marks of Sas Ayas
 INF --- 2021-05-24 23:51:20.968536 --- Printed info about Shishov Ilya
 INF --- 2021-05-24 23:51:20.968536 --- Printed marks of Shishov Ilya
+=======
+CRE --- 2021-05-18 13:22:58.212435 --- Created Student Prin Alex
+CRE --- 2021-05-18 13:22:58.212435 --- Created Student Sas Ayas
+CRE --- 2021-05-18 13:22:58.212435 --- Created Student Vinokurov Anton
+CRE --- 2021-05-18 13:22:58.212435 --- Created Student Shishov Ilya
+CRE --- 2021-05-18 13:22:58.212435 --- Created Teacher Ivanova Zinaida
+CRE --- 2021-05-18 13:22:58.212435 --- Created Class 12
+INF --- 2021-05-18 13:22:58.212435 --- Added student to class 12
+INF --- 2021-05-18 13:22:58.212435 --- Getted info about class size
+INF --- 2021-05-18 13:22:58.212435 --- Killed student from class 12
+INF --- 2021-05-18 13:22:58.212435 --- Getted info about class size
+INF --- 2021-05-18 13:22:58.222149 --- Getted info about class size
+INF --- 2021-05-18 13:22:58.222149 --- Getted info about Prin Alex
+INF --- 2021-05-18 13:22:58.222149 --- Printed info about Ivanova Zinaida
+INF --- 2021-05-18 13:22:58.222149 --- Getted info about class size
+INF --- 2021-05-18 13:22:58.222149 --- Getted info about Shishov Ilya
+INF --- 2021-05-18 13:22:58.222149 --- Printed info about Sas Ayas
+INF --- 2021-05-18 13:22:58.222149 --- Printed info about Ivanova Zinaida
+INF --- 2021-05-18 13:22:58.222149 --- Printed info about Prin Alex
+INF --- 2021-05-18 13:22:58.222149 --- Printed marks of Prin Alex
+INF --- 2021-05-18 13:22:58.222149 --- Printed info about Shishov Ilya
+INF --- 2021-05-18 13:22:58.222149 --- Printed marks of Shishov Ilya
+INF --- 2021-05-18 13:22:58.238155 --- Printed info about Ivanova Zinaida
+INF --- 2021-05-18 13:22:58.238155 --- Printed info about Shishov Ilya
+INF --- 2021-05-18 13:22:58.238155 --- Exporting info about class 12 started
+INF --- 2021-05-18 13:22:58.238155 --- Printed info about Ivanova Zinaida
+INF --- 2021-05-18 13:22:58.238155 --- Printed info about Prin Alex
+INF --- 2021-05-18 13:22:58.238155 --- Printed marks of Prin Alex
+INF --- 2021-05-18 13:22:58.238155 --- Printed info about Shishov Ilya
+INF --- 2021-05-18 13:22:58.238155 --- Printed marks of Shishov Ilya
+>>>>>>> 34a91ef722ccd654d28c4128d05ad2d980083abc
