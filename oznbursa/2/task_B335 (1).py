@@ -21,7 +21,7 @@ def biggest(s):
 
 # Тесты
 try:
-    assert biggest(['0', '0', '0']) == '0'
+    assert biggest( ) == '0'
     assert biggest(['121', '12']) == '12121'
     assert biggest(['12', '128']) == '12812'
     assert biggest(['5051', '50']) == '505150'

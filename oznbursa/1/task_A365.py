@@ -27,7 +27,7 @@ try:
     assert change_cent(29) == [4,0,0,1]  
     assert change_cent(91) == [1,1,1,3]  
     assert change_cent(0) == [0,0,0,0]     
-    assert change_cent(127) == [2,1,2,4]  
+    assert change_cent(127) == [2,0,0,5]  
     assert change_cent(3.9) == [3,0,0,0] 
 except AssertionError:
     print("TEST ERROR")

@@ -69,13 +69,6 @@ def main():
                     keyboard = keyboard_sch.get_keyboard(),
                     message = 'На какую дату?'
                     )
-            elif event.text.lower() == 'запиши мою группу':
-                vk.messages.send(
-                    user_id = event.user_id,
-                    random_id = get_random_id(),
-                    message = 'Хорошо, запишите в своём следующем сообщении вашу группу'
-                    )
-                usersdict.update({event.user_id : 1})
             elif event.text.lower() == 'привет':
                 vk.messages.send(
                     user_id = event.user_id,

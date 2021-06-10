@@ -23,16 +23,6 @@ class Klass:
     def __len__(self):
         logg('INF', 'Getted info about class size')
         return len(self.class_journal)
-    
-    def get_student(self, i):
-        if i > len(self):
-            print('Error, cannot get the student')
-            return 0
-        logg('INF', 'Getted info about {} {}'.format(self.class_journal[i].last_name, self.class_journal[i].first_name))
-        if i == 0:
-            return str(self.class_teacher)
-        else:
-            return str(self.class_journal[i - 1])
 
     def __add__(self, nstudent):
         self.class_journal.append(nstudent)
