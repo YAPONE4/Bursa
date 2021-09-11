@@ -37,8 +37,7 @@ struct List* add(List* elem, float num)
 void enter(List* elem, int n)
 {
     int k;
-    for (int i = 1; i < n; i++)
-    {
+    for (int i = 1; i < n; i++) {
         cin >> k;
         add(elem, k);
     }
