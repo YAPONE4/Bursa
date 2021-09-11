@@ -18,7 +18,7 @@ def main():
             vk.messages.send(
                 user_id = event.user_id,
                 random_id = get_random_id(),
-                message = 'Привет, ' + vk.users.get(user_id = event.user_id)[0]['first_name']
+                message = 'Привет, друг по имени ' + vk.users.get(user_id = event.user_id)[0]['first_name']
                 )
         elif event.type == VkEventType.MESSAGE_NEW and event.text.lower() == 'подбрось сасную монетку':
             coin = random.randint(0, 1)
