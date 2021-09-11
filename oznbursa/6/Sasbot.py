@@ -32,6 +32,8 @@ def main():
 
     usersdict = {}
 
+    userprekol = {}
+
     keyboard_sch = VkKeyboard(one_time=True, inline=False)
     keyboard_sch.add_button('На сегодня', color=VkKeyboardColor.POSITIVE)
     keyboard_sch.add_button('На завтра', color=VkKeyboardColor.NEGATIVE)
@@ -41,6 +43,21 @@ def main():
     keyboard_sch.add_line()
     keyboard_sch.add_button('Какая сейчас неделя?', color=VkKeyboardColor.SECONDARY)
     keyboard_sch.add_button('Расписание какой группы ты показываешь?', color=VkKeyboardColor.SECONDARY)
+    keyboard_prek = VkKeyboard(one_time=True, inline=False)
+    keyboard_prek.add_button('Хачу угадайку', color=VkKeyboardColor.POSITIVE)
+    keyboard_ugad = VkKeyboard(one_time=True, inline=False)
+    keyboard_ugad.add_button('Число 0', color=VkKeyboardColor.PRIMARY)
+    keyboard_ugad.add_button('Число 1', color=VkKeyboardColor.PRIMARY)
+    keyboard_ugad.add_button('Число 2', color=VkKeyboardColor.PRIMARY)
+    keyboard_sch.add_line()
+    keyboard_ugad.add_button('Число 3', color=VkKeyboardColor.PRIMARY)
+    keyboard_ugad.add_button('Число 4', color=VkKeyboardColor.PRIMARY)
+    keyboard_ugad.add_button('Число 5', color=VkKeyboardColor.PRIMARY)
+    keyboard_sch.add_line()
+    keyboard_ugad.add_button('Число 6', color=VkKeyboardColor.PRIMARY)
+    keyboard_ugad.add_button('Число 7', color=VkKeyboardColor.PRIMARY)
+    keyboard_ugad.add_button('Число 8', color=VkKeyboardColor.PRIMARY)
+    keyboard_ugad.add_button('Число 9', color=VkKeyboardColor.PRIMARY)
 
     for event in longpoll.listen():
         if event.type == VkEventType.MESSAGE_NEW and event.text and event.to_me:
@@ -59,6 +76,42 @@ def main():
                 download_link_save(usersdict[event.user_id], list_links)
                 book = xlrd.open_workbook("file.xlsx")
                 sheet = book.sheet_by_index(0)
+            elif event.text.lower().startswith('число'):
+                if userprekol[event.user_id] == None:
+                    vk.messages.send(
+                        user_id = event.user_id,
+                        random_id = get_random_id(),
+                        message = 'Ты что, совсем конченый? Ты даже не играешь в угадайку, клоун.'.format(event.text)
+                    )
+                else:
+                    if userprekol[event.user_id][1] == event.text[6]:
+                        vk.messages.send(
+                        user_id = event.user_id,
+                        random_id = get_random_id(),
+                        message = ''.format(event.text)
+                    )
+            elif event.text.lower() == 'я приколист':
+                vk.messages.send(
+                    user_id = event.user_id,
+                    random_id = get_random_id(),
+                    keyboard = keyboard_prek.get_keyboard(),
+                    message = 'Хо-хо, ха-ха!'
+                    )
+            elif event.text.lower() == 'хачу угадайку':
+                if userprekol[event.user_id] != None:
+                    vk.messages.send(
+                    user_id = event.user_id,
+                    random_id = get_random_id(),
+                    message = 'Ты чё, еблан? Ты и так уже играешь.'
+                    )
+                else:
+                    vk.messages.send(
+                    user_id = event.user_id,
+                    random_id = get_random_id(),
+                    message = 'Хорошо, я загадал цифру от 0 до 9. У тебя 3 попытки, чтобы его отгадать.'
+                    )
+                    usersdict[event.user_id] = [0, random.randint(0, 9)]
+
             elif event.text.lower() == 'расписание':
                 gr_to_use.update({event.user_id : usersdict[event.user_id]})
                 book = xlrd.open_workbook("file.xlsx")
