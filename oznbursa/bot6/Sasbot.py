@@ -24,7 +24,7 @@ list_links = get_sch()
 
 def main():
     
-    vk_session = vk_api.VkApi(token = 'a1acd3a38ed2e3cd673c14ca4a18bcf08c130af7da1953e00a95747c50e195aa7ce8daa79e60c3985251f')
+    vk_session = vk_api.VkApi(token = '')
     vk = vk_session.get_api()
 
     longpoll = VkLongPoll(vk_session)
