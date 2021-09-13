@@ -26,11 +26,11 @@ def get_sch():
 def download_link_save(group, list_links):
     group = group[8] + group[9]
     dl = -1
-    if group == '20':
+    if group == '21':
         dl = 0
-    elif group == '19':
+    elif group == '20':
         dl = 1
-    elif group == '18':
+    elif group == '19':
         dl = 2
     f = open('file.xlsx', 'wb')
     ulink = requests.get(list_links[dl])
@@ -40,11 +40,11 @@ def download_link_save(group, list_links):
 def download_link_temp(group, list_links):
     group = group[8] + group[9]
     dl = -1
-    if group == '20':
+    if group == '21':
         dl = 0
-    elif group == '19':
+    elif group == '20':
         dl = 1
-    elif group == '18':
+    elif group == '19':
         dl = 2
     f = open('file2.xlsx', 'wb')
     ulink = requests.get(list_links[dl])

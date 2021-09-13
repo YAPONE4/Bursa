@@ -11,6 +11,7 @@ from pars import*
 import xlrd
 from datetime import*
 from weather import*
+import os
 
 random.seed()
 
@@ -23,7 +24,7 @@ list_links = get_sch()
 
 def main():
     
-    vk_session = vk_api.VkApi(token = 'f3f9fa0d9782c58d31c5bdcaac34aeed51e747d8ecec72ec6ee4fc899f547bff9e90a4332e85de73e02f7')
+    vk_session = vk_api.VkApi(token = 'a1acd3a38ed2e3cd673c14ca4a18bcf08c130af7da1953e00a95747c50e195aa7ce8daa79e60c3985251f')
     vk = vk_session.get_api()
 
     longpoll = VkLongPoll(vk_session)
@@ -34,6 +35,14 @@ def main():
 
     userprekol = {}
 
+    filelist = os.listdir('картино4ки')
+    for fichier in filelist:
+        if (not(fichier.endswith(".png")) and not(fichier.endswith(".jpg")) and not(fichier.endswith(".gif"))):
+            filelist.remove(fichier)
+
+    keyboard_objective = VkKeyboard(one_time=True, inline=False)
+    keyboard_objective.add_button('Я приколист', color=VkKeyboardColor.POSITIVE)
+    keyboard_objective.add_button('Я практическая работа', color=VkKeyboardColor.NEGATIVE)
     keyboard_sch = VkKeyboard(one_time=True, inline=False)
     keyboard_sch.add_button('На сегодня', color=VkKeyboardColor.POSITIVE)
     keyboard_sch.add_button('На завтра', color=VkKeyboardColor.NEGATIVE)
@@ -49,14 +58,15 @@ def main():
     keyboard_ugad.add_button('Число 0', color=VkKeyboardColor.PRIMARY)
     keyboard_ugad.add_button('Число 1', color=VkKeyboardColor.PRIMARY)
     keyboard_ugad.add_button('Число 2', color=VkKeyboardColor.PRIMARY)
-    keyboard_sch.add_line()
+    keyboard_ugad.add_line()
     keyboard_ugad.add_button('Число 3', color=VkKeyboardColor.PRIMARY)
     keyboard_ugad.add_button('Число 4', color=VkKeyboardColor.PRIMARY)
     keyboard_ugad.add_button('Число 5', color=VkKeyboardColor.PRIMARY)
-    keyboard_sch.add_line()
+    keyboard_ugad.add_line()
     keyboard_ugad.add_button('Число 6', color=VkKeyboardColor.PRIMARY)
     keyboard_ugad.add_button('Число 7', color=VkKeyboardColor.PRIMARY)
     keyboard_ugad.add_button('Число 8', color=VkKeyboardColor.PRIMARY)
+    keyboard_ugad.add_line()
     keyboard_ugad.add_button('Число 9', color=VkKeyboardColor.PRIMARY)
 
     for event in longpoll.listen():
@@ -77,19 +87,43 @@ def main():
                 book = xlrd.open_workbook("file.xlsx")
                 sheet = book.sheet_by_index(0)
             elif event.text.lower().startswith('число'):
-                if userprekol[event.user_id] == None:
+                if userprekol[event.user_id] == 0:
                     vk.messages.send(
                         user_id = event.user_id,
                         random_id = get_random_id(),
-                        message = 'Ты что, совсем конченый? Ты даже не играешь в угадайку, клоун.'.format(event.text)
+                        message = 'Ты даже не играешь в угадайку!'.format(event.text)
                     )
                 else:
                     if userprekol[event.user_id][1] == event.text[6]:
+                        pict = vk.photos.getMessagesUploadServer()
+                        pictpost = requests.post(pict['upload_url'], files = {'photo': open('картино4ки/' + filelist[random.randint(0, len(filelist))], 'rb')}).json()
+                        pictsave = vk.photos.saveMessagesPhoto(photo = pictpost['photo'], server = pictpost['server'], hash = pictpost['hash'])[0]
+                        pictreveal = 'photo{}_{}'.format(pictsave['owner_id'], pictsave['id'])
                         vk.messages.send(
-                        user_id = event.user_id,
-                        random_id = get_random_id(),
-                        message = ''.format(event.text)
-                    )
+                            user_id = event.user_id,
+                            random_id = get_random_id(),
+                            keyboard = keyboard_prek.get_keyboard(),
+                            attachment = pictreveal,
+                            message = 'Молодец. С меня картиночка из моей мусорной коллекции.'.format(event.text)
+                            )
+                        userprekol[event.user_id] = 0
+                    else:
+                        if userprekol[event.user_id][0] == 2:
+                            vk.messages.send(
+                            user_id = event.user_id,
+                            random_id = get_random_id(),
+                            keyboard = keyboard_prek.get_keyboard(),
+                            message = 'Ты проиграл.'.format(event.text)
+                            )
+                            userprekol[event.user_id] = 0
+                        else:
+                            vk.messages.send(
+                                user_id = event.user_id,
+                                random_id = get_random_id(),
+                                keyboard = keyboard_ugad.get_keyboard(),
+                                message = 'Неправильно, попытайся ещё раз.'.format(event.text)
+                                )
+                            userprekol[event.user_id][0] += 1
             elif event.text.lower() == 'я приколист':
                 vk.messages.send(
                     user_id = event.user_id,
@@ -98,19 +132,22 @@ def main():
                     message = 'Хо-хо, ха-ха!'
                     )
             elif event.text.lower() == 'хачу угадайку':
-                if userprekol[event.user_id] != None:
+                if event.user_id not in userprekol:
+                    userprekol.update({event.user_id : 0})
+                if userprekol[event.user_id] != 0:
                     vk.messages.send(
                     user_id = event.user_id,
                     random_id = get_random_id(),
-                    message = 'Ты чё, еблан? Ты и так уже играешь.'
+                    message = 'Ты и так уже играешь.'
                     )
                 else:
                     vk.messages.send(
                     user_id = event.user_id,
                     random_id = get_random_id(),
+                    keyboard = keyboard_ugad.get_keyboard(),
                     message = 'Хорошо, я загадал цифру от 0 до 9. У тебя 3 попытки, чтобы его отгадать.'
                     )
-                    usersdict[event.user_id] = [0, random.randint(0, 9)]
+                    userprekol[event.user_id] = [0, str(random.randint(0, 9))]
 
             elif event.text.lower() == 'расписание':
                 gr_to_use.update({event.user_id : usersdict[event.user_id]})
@@ -126,6 +163,7 @@ def main():
                 vk.messages.send(
                     user_id = event.user_id,
                     random_id = get_random_id(),
+                    keyboard = keyboard_objective.get_keyboard(),
                     message = 'Привет, ' + vk.users.get(user_id = event.user_id)[0]['first_name']
                     )
             elif event.text.lower() == 'на сегодня':
@@ -199,7 +237,7 @@ def main():
                             random_id = get_random_id(),
                             message = 'Группы {}'.format(gr_to_use[event.user_id])
                             )
-            elif event.text.lower() == 'начать общение':
+            elif event.text.lower() == 'я практическая работа':
                 comm = 'Привет! Сейчас я вкратце расскажу как мной пользоваться!\n\nДля того, чтобы записать свою группу, ты должен написать <(группа)>. Дальше, написав <Расписание>, в окошке будет выведены все возможные команды.\nЧтобы узнать погоду, напиши <Погода>.'
                 comm += '\nТакже ты можешь посмотреть расписание чужих групп, не записывая их как свою! Для этого пишешь либо <Расписание (группа)>, либо <Расписание (день недели) (группа)>'
                 vk.messages.send(
