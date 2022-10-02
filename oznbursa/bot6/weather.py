@@ -64,7 +64,7 @@ def direction(deg):
         return 'северный'
 
 def get_weather():
-    response = requests.get('https://api.openweathermap.org/data/2.5/weather?q=Moscow&appid=9b0a8828b209e4ce268c72853ca364dc&units=metric')
+    response = requests.get('')
     info = response.json()
     outcome = 'Погода в Москве: {}\n'.format(main_dict[info['weather'][0]['main']])
     outcome += '{}, температура: {} - {} °C\n'.format(dictionary[info['weather'][0]['description']], info['main']['temp_min'], info['main']['temp_max'])
